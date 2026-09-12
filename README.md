@@ -1,4 +1,4 @@
-# Cpan_cleaner · C 盘迁移助手
+﻿# Cpan_cleaner · C 盘迁移助手
 
 > 把 C 盘上的目录**物理迁移**到其他盘，并在原位置建立目录联接（Junction），
 > 使原程序**路径不变、无感知、照常启动**。
@@ -90,14 +90,14 @@ C 盘满了，但**不敢乱删**——怕删掉某个软件的数据。
 
 > ## 👉 [**下载 Cpan_cleaner-v1.0.0.zip**](https://github.com/wang1413520/Cpan_cleaner/releases/download/v1.0.0/Cpan_cleaner-v1.0.0.zip)
 >
-> 94 KB · 免安装 · 解压即用
+  > 1.26 MB · 免安装 · 解压即用
 
 下载后解压到任意目录（例如 `D:\Cpan_cleaner`），双击 **`启动-C盘迁移助手.cmd`** 即可。
 
 SHA256 校验值（可选）：
 
 ```
-69FCFC121FEB1F599E05C3CA60726F6F26C7280C83B7F41CE6E0500216A92D4D
+4D9B7C60C661C56156A69FF1361C4338765E4CC2E4669D341B47EE6AB43ADABA
 ```
 
 ```powershell
