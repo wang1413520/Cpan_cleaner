@@ -481,7 +481,7 @@ function Load-List {
             SizeGB  = [double]$r.SizeGB
             Path    = [string]$r.Path
             Identity= if ($isAnnotated) { [string]$r.Identity } else { '' }
-            AiSugg  = if ($isAnnotated) { [string]$r.AiSuggestion } else { '' }
+            AiSugg  = if ($isAnnotated) { Convert-AiSugg ([string]$r.AiSuggestion) } else { '' }
             AiConf  = if ($isAnnotated) { [string]$r.AiConfidence } else { '' }
             Reason  = if ($isAnnotated) { [string]$r.AiReason } else { [string]$r.Reason }
             RuleRea = if ($isAnnotated) { [string]$r.RuleReason } else { [string]$r.Reason }
@@ -537,12 +537,10 @@ function Update-Stat {
     $checked = @($lv.CheckedItems)
     $sumChk = 0.0
     foreach ($ci in $checked) { if ($ci.Tag) { $sumChk += [double]$ci.Tag.SizeGB } }
+    # 紧凑一行，避免在 250px 宽度里被截断
     $rf = ''
-    if ($script:LastRefresh) {
-        $rf = "   · 刷新 {0}" -f $script:LastRefresh.ToString('HH:mm:ss')
-        if ($script:LastRefreshChanged -gt 0) { $rf += "（{0} 项变更）" -f $script:LastRefreshChanged }
-    }
-    $lblListStat.Text = ("显示 {0}/{1} 项   可操作 {2:N2} GB{3}" -f $shown, $script:AllRows.Count, $sumAct, $rf)
+    if ($script:LastRefresh) { $rf = "  ·  {0}" -f $script:LastRefresh.ToString('HH:mm:ss') }
+    $lblListStat.Text = ("{0}/{1}  ·  可操作 {2:N2} GB{3}" -f $shown, $script:AllRows.Count, $sumAct, $rf)
     $lblSel.Text = ("已勾选 {0} 项，合计 {1:N2} GB" -f $checked.Count, $sumChk)
 }
 
@@ -670,6 +668,18 @@ function Test-AiConnectionInline {
 # ============================================================
 #  清理功能（只对「可删 DELETE」生效）
 # ============================================================
+function Convert-AiSugg {
+    # AI 返回的是 keep/review/delete/migrate 枚举，界面上汉化一下
+    param([string]$s)
+    switch ($s.ToLower()) {
+        'keep'    { return '别动' }
+        'review'  { return '待定' }
+        'delete'  { return '可删' }
+        'migrate' { return '可迁' }
+        default   { return $s }
+    }
+}
+
 function Get-CleanableItems {
     <#
     .SYNOPSIS

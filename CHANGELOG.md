@@ -49,9 +49,14 @@
 **工具**
 - `Repair-Annotation-Encoding.ps1` —— 标注结果编码乱码还原
 
-### 修复
+**文档**
+- `README.md` —— 含界面预览截图、下载直链、安全模型摘要、折叠式 FAQ
+- `docs/使用教程.md` —— 从下载到迁移完成的分步图文教程
+- `docs/安全设计.md` —— 完整安全模型说明
+- `docs/常见问题.md` —— 30+ 条 FAQ
+- `docs/images/` —— 7 张界面截图
 
-开发过程中发现并修复的实现缺陷（均已补验收断言）：
+### 修复（开发过程中发现并修复的实现缺陷，均已补验收断言）
 
 - `Start-Process -PassThru` 不加 `-Wait` 时读不到 `ExitCode`，导致所有迁移误判失败 → 改用 `ProcessStartInfo` + `Process.Start`
 - 把「是否管理员」当硬门槛 —— 但 NTFS 上创建 Junction **不需要管理员** → 改为直接探测真实能力
@@ -62,3 +67,5 @@
 - PowerShell 5.1 的 `Invoke-RestMethod` 在服务端不带 `charset` 时按 ISO-8859-1 解码 → 中文乱码 → 改为自行按 UTF-8 解码
 - WinForms `Anchor` 在容器尺寸确定前设置导致控件位置全部错位 → 记录设计尺寸，窗体显示后重设
 - `FormClosing` 里把 `break` 放进了 `ForEach-Object` 脚本块 —— 抛 `BreakException`，`try/catch` 抓不住，会弹出 .NET 未处理异常框 → 改用 `for` 语句，并加全局异常安全网
+- 决策清单右上角状态栏文字过长被截断 → 改为紧凑格式
+- 「AI建议」列直接显示 `keep/review/delete/migrate` 英文枚举 → 汉化为「别动/待定/可删/可迁」
