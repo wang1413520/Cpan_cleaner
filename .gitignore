@@ -1,0 +1,18 @@
+# 运行产物（含用户数据，不纳入版本控制）
+report/
+*.log
+
+# 个人 AI 配置（含加密后的 API Key，不要提交）
+ai-config.json
+
+# 临时/备份文件
+*.tmp
+*.bak
+*.__migrating_*
+.__mc_*
+~$*
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
