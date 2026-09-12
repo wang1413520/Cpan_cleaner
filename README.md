@@ -5,6 +5,8 @@
 
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?logo=windows)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell)
+![Release](https://img.shields.io/github/v/release/wang1413520/Cpan_cleaner?color=brightgreen)
+![Downloads](https://img.shields.io/github/downloads/wang1413520/Cpan_cleaner/total?color=blue)
 ![Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -53,9 +55,26 @@ C 盘满了，但**不敢乱删**——怕删掉某个软件的数据。
 
 ### 方式 1：下载 ZIP（推荐，最简单）
 
-**👉 [点此下载最新版 ZIP](https://github.com/wang1413520/Cpan_cleaner/archive/refs/heads/main.zip)**
+> ## 👉 [**下载 Cpan_cleaner-v1.0.0.zip**](https://github.com/wang1413520/Cpan_cleaner/releases/download/v1.0.0/Cpan_cleaner-v1.0.0.zip)
+>
+> 94 KB · 免安装 · 解压即用
 
-下载后解压到任意目录（例如 `D:\Cpan_cleaner`），双击 `启动-C盘迁移助手.cmd` 即可。
+下载后解压到任意目录（例如 `D:\Cpan_cleaner`），双击 **`启动-C盘迁移助手.cmd`** 即可。
+
+SHA256 校验值（可选）：
+
+```
+69FCFC121FEB1F599E05C3CA60726F6F26C7280C83B7F41CE6E0500216A92D4D
+```
+
+```powershell
+# 校验下载完整性
+Get-FileHash .\Cpan_cleaner-v1.0.0.zip -Algorithm SHA256
+```
+
+其他下载方式：
+- [全部 Releases](https://github.com/wang1413520/Cpan_cleaner/releases)
+- [main 分支最新源码 ZIP](https://github.com/wang1413520/Cpan_cleaner/archive/refs/heads/main.zip)（开发中版本）
 
 ### 方式 2：git clone
 
